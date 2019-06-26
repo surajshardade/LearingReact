@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>From Data to UI</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+    <style>
+      #container {
+        padding: 50px;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+      class CircleDraw extends React.Component {
+        render() {
+          const circleStyle = {
+            backgroundColor: this.props.bgColor,
+            borderRadius: "50%",
+            height: 100,
+            width: 100,
+            padding: 10,
+            margin: 20,
+            display: "inline-block"
+          };
+          return <div style={circleStyle} />;
+        }
+      }
+
+      var theCircle = <CircleDraw bgColor="#F9C240" />;
+
+      function showCircle() {
+        var colors = ["#393E41", "#E94F37", "#1C89BF", "#A1D363"];
+        var ran = Math.floor(Math.random() * colors.length);
+
+        // return a Circle with a randomly chosen color
+        return <CircleDraw bgColor={colors[ran]} />;
+      }
+
+      var colors = [
+        "#393E41",
+        "#E94F37",
+        "#1C89BF",
+        "#A1D363",
+        "#85FFC7",
+        "#297373",
+        "#FF8552",
+        "#A40E4C"
+      ];
+
+      var renderData = [];
+
+      for (var i = 0; i < colors.length; i++) {
+        var color = colors[i];
+        renderData.push(<CircleDraw key={i + color} bgColor={color} />);
+      }
+
+      //   ReactDOM.render(
+      //     <div>
+      //       <CircleDraw bgColor="#393E41" />
+      //     </div>,
+      //     document.querySelector("#container")
+      //   );
+
+      //   ReactDOM.render(
+      //     <div>{theCircle}</div>,
+      //     document.querySelector("#container")
+      //   );
+
+      //   ReactDOM.render(
+      //     <div>{showCircle()}</div>,
+      //     document.querySelector("#container")
+      //   );
+
+      ReactDOM.render(
+        <div>{renderData}</div>,
+        document.querySelector("#container")
+      );
+    </script>
+  </body>
+</html>
