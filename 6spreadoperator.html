@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Spread Operator</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+      class Display extends React.Component {
+        render() {
+          return (
+            <div>
+              <p>{this.props.color}</p>
+              <p>{this.props.size}</p>
+              <p>{this.props.num}</p>
+            </div>
+          );
+        }
+      }
+
+      class Label extends React.Component {
+        render() {
+          return (
+            <Display
+              //   color={this.props.color}
+              //   size={this.props.size}
+              //   num={this.props.num}
+              {...this.props}
+            />
+          );
+        }
+      }
+
+      class Shirt extends React.Component {
+        render() {
+          return (
+            <Label
+              //   color={this.props.color}
+              //   size={this.props.size}
+              //   num={this.props.num}
+              {...this.props}
+            />
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <Shirt color="orange" size="medium" num="18.5" />,
+        document.querySelector("#container")
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JSX</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      class Capitalization extends React.Component {
+        render() {
+          return [
+            <p key="1">Returing 1</p>,
+            <p key="3">Returing 2</p>,
+            <p key="2">Returing 3</p> //returning mutiple ele as array
+          ];
+        }
+      }
+      class CapitalizationFragment extends React.Component {
+        render() {
+          return (
+            <React.Fragment>
+              {/* represent React.Fragment*/
+              /*This comment placed in {} to comment chield ele*/}
+              <p>Returing 1</p>
+              <p>Returing 2</p>
+              <p>Returing 3</p> {/*returning mutiple ele as array*/}
+            </React.Fragment>
+          );
+        }
+      }
+
+      const dest = document.querySelector("#container"); //we can use jsx anywhere outside render and return
+      const component = <CapitalizationFragment />;
+      ReactDOM.render(component, dest);
+    </script>
+  </body>
+</html>
